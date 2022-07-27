@@ -77,8 +77,7 @@ component {
       typeFields = {
         "Database" : "Datasource,Detail,ErrorCode,Message,NativeErrorCode,Sql,SqlState,Type,type,where",
         "Expression": "Message,Detail,ErrNumber,ErrorCode,Extended_Info,ExtendedInfo,Type,TagContext",
-        "general": "Message,Detail,YourMom",
-        "myCustom": "hide"
+        "general": "Message,Detail,tagContext"
       },
       filterPhrases = [ "/modules/", "/lucee", "coldbox/system", "/testbox/" ],
       errorClasses = {
@@ -90,8 +89,7 @@ component {
         "Expression" : "expression@errorFilter",
         // "Lock":"",
         // "Application":"",
-        "Any"        : "general@errorFilter",
-        "myCustom": "myCustomError"
+        "Any"        : "general@errorFilter"
       },
       "tagContextLines":3,
       "tagContextFields": "codePrintPlain,line,template"

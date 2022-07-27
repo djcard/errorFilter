@@ -1,0 +1,59 @@
+{
+    "name":"Error Filter",
+    "author":"Dan Card <dcard@ortussolutions.com>",
+    "homepage":"https://github.com/djcard/errorFilter",
+    "documentation":"https://github.com/djcard/errorFilter",
+    "repository":{
+        "type":"git",
+        "URL":"https://github.com/djcard/errorFilter"
+    },
+    "bugs":"https://github.com/djcard/errorFilter/issues",
+    "slug":"errorFilter",
+    "shortDescription":"A Coldbox Module to filter error messages to remove unwanted fields and items in the tagContext array to reduce noise and make error items more readable.",
+    "type":"modules",
+    "changelog":"",
+    "contributors":[],
+    "ignore":[
+        "**/.*",
+        "/test/",
+        "/tests/"
+    ],
+    "dependencies":{
+    },
+    "description":"",
+    "devDependencies":{},
+    "installPaths":{},
+    "instructions":"",
+    "keywords":[],
+    "license":[
+        {
+            "type":"",
+            "URL":""
+        }
+    ],
+    "location":"ForgeboxStorage",
+    "private":false,
+    "projectURL":"",
+    "scripts":{},
+    "testbox":{
+        "bundles":"",
+        "directory":"tests.specs",
+        "excludes":"",
+        "labels":"",
+        "options":{},
+        "recurse":true,
+        "reporter":"",
+        "runner":[
+            {
+                "default":""
+            }
+        ],
+        "testBundles":"",
+        "testSpecs":"",
+        "testSuites":"",
+        "verbose":true,
+        "watchDelay":500,
+        "watchPaths":"**.cfc"
+    },
+    "version":"0.0.1"
+}

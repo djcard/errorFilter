@@ -95,7 +95,7 @@ component accessors="true" {
 	}
 
   function trimAndFilterTagContext(required array tagContext){
-    return trimTagContext( filterTagContext( arguments.err.tagContext ) );
+    return trimTagContext( filterTagContext( arguments.tagContext ) );
 
   }
 }

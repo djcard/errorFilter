@@ -1,12 +1,9 @@
 component {
     function expressionError( shouldRethrow=true){
-      writedump(var="*********************************",output="console");
-      writedump(var="firing expression Error",output="console");
       try {
         return 1 + "a";
       }
       catch(any err){
-        writedump(var="Expression Error Caught",output="console");
         return err;
       }
 

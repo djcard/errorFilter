@@ -74,25 +74,25 @@ component {
 
 		// module settings - stored in modules.name.settings
 		settings = {
-      typeFields = {
-        "Database" : "Datasource,Detail,ErrorCode,Message,NativeErrorCode,Sql,SqlState,Type,type,where",
-        "Expression": "Message,Detail,ErrNumber,ErrorCode,Extended_Info,ExtendedInfo,Type,TagContext",
-        "general": "Message,Detail,tagContext"
-      },
-      filterPhrases = [ "/modules/", "/lucee", "coldbox/system", "/testbox/" ],
-      errorClasses = {
-        "Database"   : "databaseError@errorFilter",
-        // "MissingInclude":"",
-        // "Template":"",
-        // "Object":"",
-        // "Security":"",
-        "Expression" : "expression@errorFilter",
-        // "Lock":"",
-        // "Application":"",
-        "Any"        : "general@errorFilter"
-      },
-      "tagContextLines":3,
-      "tagContextFields": "codePrintPlain,line,template"
+      		typeFields = {
+        		"Database" : "Datasource,Detail,ErrorCode,Message,NativeErrorCode,stackTrace,Sql,SqlState,Type,type,where",
+        		"Expression": "Message,Detail,ErrNumber,ErrorCode,Extended_Info,ExtendedInfo,stackTrace,Type,TagContext",
+        		"general": "Message,Detail,stackTrace,tagContext"
+      		},
+      		filterPhrases = [ "/modules/", "/lucee", "coldbox/system", "/testbox/" ],
+      		errorClasses = {
+        		"Database"   : "database@errorFilter",
+        		// "MissingInclude":"",
+        		// "Template":"",
+        		// "Object":"",
+        		// "Security":"",
+        		"Expression" : "expression@errorFilter",
+        		// "Lock":"",
+        		// "Application":"",
+        		"Any"        : "general@errorFilter"
+      		},
+      		"tagContextLines":3,
+      		"tagContextFields": "codePrintPlain,line,template"
 		};
 
 		// Layout Settings

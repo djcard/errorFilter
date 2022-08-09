@@ -3,11 +3,11 @@ A ColdBox Module to filter error messages to remove unwanted fields and items in
 
 Note: Based on ideas and work from John Wilson at Synaptrix! Thanks!
 
-##Installation:
+## Installation:
 
 `box install errorFilter`
 
-##Usage: 
+## Usage: 
 
 The simplest usage is to instantiate the errorFilter model ( `getInstance(errorFilter@errorFilter`) )
 and pass any error received through the run() method before passing that on to logbox or wherever you are inclined to send it. 
@@ -19,7 +19,7 @@ has items which are clearly outside of immediate purview of the error. For examp
 seeing the calls from code from inside ColdBox, TestBox or other frameworks can occasionally be helpful but, more likely than not, it is simply noise which can be filtered out. Error Filter
 also can both filter out entries fitting a certain pattern and limit the length of the tagContext array. 
 
-##Properties
+## Properties
 
 
 Struct errorClasses: The component which handles filtering the error. 
@@ -32,7 +32,7 @@ String (comma separated list) tagContextFields: The fields to include in each ta
 
 Array of strings filterPhrases: The key phrases uses to filter out tagContext entries
 
-##Handling Custom Errors
+## Handling Custom Errors
 
 It is possible to configure ErrorFilter to handle custom errors.
 

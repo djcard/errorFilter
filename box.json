@@ -18,8 +18,7 @@
         "/test/",
         "/tests/"
     ],
-    "dependencies":{
-    },
+    "dependencies":{},
     "description":"",
     "devDependencies":{},
     "installPaths":{},
@@ -55,5 +54,5 @@
         "watchDelay":500,
         "watchPaths":"**.cfc"
     },
-    "version":"0.0.1"
+    "version":"0.0.2"
 }

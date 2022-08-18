@@ -40,82 +40,82 @@
  **/
 component {
 
-    // Module Properties
-    this.title = 'ErrorFilter';
-    this.author = 'Dan Card';
-    this.webURL = '';
-    this.description = 'An Attempt to filter through the cfml error structure and retreive pertinent info and filter out noise';
-    this.version = '1.0.0';
-    // If true, looks for views in the parent first, if not found, then in the module. Else vice-versa
-    this.viewParentLookup = true;
-    // If true, looks for layouts in the parent first, if not found, then in module. Else vice-versa
-    this.layoutParentLookup = true;
-    // Module Entry Point
-    this.entryPoint = 'ErrorFilter';
-    // Inherit Entry Point
-    this.inheritEntryPoint = false;
-    // Model Namespace
-    this.modelNamespace = 'ErrorFilter';
-    // CF Mapping
-    this.cfmapping = 'ErrorFilter';
-    // Auto-map models
-    this.autoMapModels = true;
-    // Module Dependencies
-    this.dependencies = [];
+	// Module Properties
+	this.title              = "ErrorFilter";
+	this.author             = "Dan Card";
+	this.webURL             = "";
+	this.description        = "An Attempt to filter through the cfml error structure and retreive pertinent info and filter out noise";
+	this.version            = "1.0.0";
+	// If true, looks for views in the parent first, if not found, then in the module. Else vice-versa
+	this.viewParentLookup   = true;
+	// If true, looks for layouts in the parent first, if not found, then in module. Else vice-versa
+	this.layoutParentLookup = true;
+	// Module Entry Point
+	this.entryPoint         = "ErrorFilter";
+	// Inherit Entry Point
+	this.inheritEntryPoint  = false;
+	// Model Namespace
+	this.modelNamespace     = "ErrorFilter";
+	// CF Mapping
+	this.cfmapping          = "ErrorFilter";
+	// Auto-map models
+	this.autoMapModels      = true;
+	// Module Dependencies
+	this.dependencies       = [];
 
-    /**
-     * Configure the module
-     */
-    function configure() {
-        // parent settings
-        parentSettings = {};
+	/**
+	 * Configure the module
+	 */
+	function configure(){
+		// parent settings
+		parentSettings = {};
 
-        // module settings - stored in modules.name.settings
-        settings = {
-            typeFields: {
-                'Database': 'Datasource,Detail,ErrorCode,Message,NativeErrorCode,stackTrace,Sql,SqlState,Type,type,where',
-                'Expression': 'Message,Detail,ErrNumber,ErrorCode,Extended_Info,ExtendedInfo,stackTrace,Type,TagContext',
-                'general': 'Message,Detail,stackTrace,tagContext'
-            },
-            filterPhrases: [
-                '/modules/',
-                '/lucee',
-                'coldbox/system',
-                '/testbox/'
-            ],
-            errorClasses: {
-                'Database': 'database@errorFilter',
-                'Expression': 'expression@errorFilter',
-                'Any': 'general@errorFilter'
-            },
-            'tagContextLines': 3,
-            'tagContextFields': 'codePrintPlain,line,template',
-            'removeAllBlankLines': false
-        };
+		// module settings - stored in modules.name.settings
+		settings = {
+			typeFields : {
+				"Database"   : "Datasource,Detail,ErrorCode,Message,NativeErrorCode,stackTrace,Sql,SqlState,Type,type,where",
+				"Expression" : "Message,Detail,ErrNumber,ErrorCode,Extended_Info,ExtendedInfo,stackTrace,Type,TagContext",
+				"general"    : "Message,Detail,stackTrace,tagContext"
+			},
+			filterPhrases : [
+				"/modules/",
+				"/lucee",
+				"coldbox/system",
+				"/testbox/"
+			],
+			errorClasses : {
+				"Database"   : "database@errorFilter",
+				"Expression" : "expression@errorFilter",
+				"Any"        : "general@errorFilter"
+			},
+			"tagContextLines"     : 3,
+			"tagContextFields"    : "codePrintPlain,line,template",
+			"removeAllBlankLines" : false
+		};
 
-        // Layout Settings
-        layoutSettings = {defaultLayout: ''};
+		// Layout Settings
+		layoutSettings = { defaultLayout : "" };
 
-        // Custom Declared Points
-        interceptorSettings = {customInterceptionPoints: []};
+		// Custom Declared Points
+		interceptorSettings = { customInterceptionPoints : [] };
 
-        // Custom Declared Interceptors
-        interceptors = [];
+		// Custom Declared Interceptors
+		interceptors = [];
 
-        // Binder Mappings
-        // binder.map("Alias").to("#moduleMapping#.models.MyService");
-    }
+		// Binder Mappings
+		// binder.map("Alias").to("#moduleMapping#.models.MyService");
+	}
 
-    /**
-     * Fired when the module is registered and activated.
-     */
-    function onLoad() {
-    }
+	/**
+	 * Fired when the module is registered and activated.
+	 */
+	function onLoad(){
+	}
 
-    /**
-     * Fired when the module is unregistered and unloaded
-     */
-    function onUnload() {
-    }
+	/**
+	 * Fired when the module is unregistered and unloaded
+	 */
+	function onUnload(){
+	}
 
 }

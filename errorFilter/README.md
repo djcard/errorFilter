@@ -19,7 +19,8 @@ has items which are clearly outside of immediate purview of the error. For examp
 seeing the calls from code from inside ColdBox, TestBox or other frameworks can occasionally be helpful but, more likely than not, it is simply noise which can be filtered out. Error Filter
 also can both filter out entries fitting a certain pattern and limit the length of the tagContext array. 
 
-The stackTrace key in an error is a long string which outputs the stackTrace.  
+The stackTrace key in an error is a long string which outputs the stackTrace. If ErrorFilter displays that string, it attempts
+to break it into an array using "#chr(9)#at " as the delimiter. This roughly splits it at the "at". 
 
 ## Properties
 
@@ -59,7 +60,8 @@ It is possible to configure ErrorFilter to handle custom errors.
         		"Any"        : "general@errorFilter"
       		},
       		"tagContextLines" : 3,
-      		"tagContextFields" : "codePrintPlain,line,template"
+      		"tagContextFields" : "codePrintPlain,line,template",
+      		"removeAllBlankLines" : false
       	}
 ```
 

@@ -3,35 +3,35 @@
  */
 component extends="coldbox.system.testing.BaseTestCase" accessors="true" {
 
-    /*********************************** LIFE CYCLE Methods ***********************************/
+	/*********************************** LIFE CYCLE Methods ***********************************/
 
-    // executes before all suites+specs in the run() method
-    function beforeAll() {
-        super.beforeAll();
-    }
+	// executes before all suites+specs in the run() method
+	function beforeAll(){
+		super.beforeAll();
+	}
 
-    // executes after all suites+specs in the run() method
-    function afterAll() {
-        super.afterAll();
-    }
+	// executes after all suites+specs in the run() method
+	function afterAll(){
+		super.afterAll();
+	}
 
-    /*********************************** BDD SUITES ***********************************/
+	/*********************************** BDD SUITES ***********************************/
 
 
-    function run() {
-        describe(
-            title = 'QueryError should',
-            labels = 'automated',
-            body = function() {
-                beforeEach(function() {
-                    testobj = createmock(object = getInstance('CreateErrors@ErrorFilter'));
-                });
-                it('return an expressionError', function() {
-                    testme = testobj.queryError();
-                    expect(testme.type).tobe('database');
-                });
-            }
-        );
-    }
+	function run(){
+		describe(
+			title  = "QueryError should",
+			labels = "automated",
+			body   = function(){
+				beforeEach( function(){
+					testobj = createmock( object = getInstance( "CreateErrors@ErrorFilter" ) );
+				} );
+				it( "return an expressionError", function(){
+					testme = testobj.queryError();
+					expect( testme.type ).tobe( "database" );
+				} );
+			}
+		);
+	}
 
 }

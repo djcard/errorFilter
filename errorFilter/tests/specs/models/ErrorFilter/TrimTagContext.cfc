@@ -3,90 +3,90 @@
  */
 component extends="coldbox.system.testing.BaseTestCase" accessors="true" {
 
-    /*********************************** LIFE CYCLE Methods ***********************************/
+	/*********************************** LIFE CYCLE Methods ***********************************/
 
-    // executes before all suites+specs in the run() method
-    function beforeAll() {
-        super.beforeAll();
-    }
+	// executes before all suites+specs in the run() method
+	function beforeAll(){
+		super.beforeAll();
+	}
 
-    // executes after all suites+specs in the run() method
-    function afterAll() {
-        super.afterAll();
-    }
+	// executes after all suites+specs in the run() method
+	function afterAll(){
+		super.afterAll();
+	}
 
-    /*********************************** BDD SUITES ***********************************/
+	/*********************************** BDD SUITES ***********************************/
 
 
-    function run() {
-        describe(
-            title = 'AddKeys should',
-            labels = 'automated',
-            body = function() {
-                beforeEach(function() {
-                    testobj = createmock(object = getInstance('ErrorFilter@ErrorFilter'));
-                });
-                it('If an empty array is submitted, return an empty array', function() {
-                    testme = testObj.trimTagContext([]);
-                    expect(testme.len()).toBe(0);
-                });
-                it('The returned array should be equal or less than the tagContextLines property and each index in the array should be a struct with the keys in the tagContextFields property ', function() {
-                    var fakeLen = randRange(1, 3);
+	function run(){
+		describe(
+			title  = "AddKeys should",
+			labels = "automated",
+			body   = function(){
+				beforeEach( function(){
+					testobj = createmock( object = getInstance( "ErrorFilter@ErrorFilter" ) );
+				} );
+				it( "If an empty array is submitted, return an empty array", function(){
+					testme = testObj.trimTagContext( [] );
+					expect( testme.len() ).toBe( 0 );
+				} );
+				it( "The returned array should be equal or less than the tagContextLines property and each index in the array should be a struct with the keys in the tagContextFields property ", function(){
+					var fakeLen = randRange( 1, 3 );
 
-                    var fakeFields = mockData($num = 3, $type = 'words:4')[1].replace(' ', ',', 'all');
-                    var fakearr = createArray(randRange(5, 10), fakeFields);
-                    testObj.settagContextLines(fakelen);
-                    testObj.settagContextFields(fakeFields);
-                    testme = testObj.trimTagContext(fakearr);
-                    expect(testme.len()).toBe(fakelen);
-                    testme.each(function(item) {
-                        fakeFields
-                            .listToArray()
-                            .each(function(item2) {
-                                expect(item).tohavekey(item2);
-                            });
-                    });
-                });
-                it('If the submitted array has values for the apprpriate keys, they should be reflected in the returned array of structs', function() {
-                    var fakeLen = randRange(1, 3);
-                    var fakeFields = mockData($num = 3, $type = 'words:4')[1].replace(' ', ',', 'all');
-                    var fakearr = createArray(randRange(5, 10), fakeFields);
-                    testObj.settagContextLines(fakelen);
-                    testObj.settagContextFields(fakeFields);
-                    testme = testObj.trimTagContext(fakearr);
-                    expect(testme.len()).toBe(fakelen);
-                    testme.each(function(item, idx) {
-                        fakeFields
-                            .listToArray()
-                            .each(function(item2, idx2) {
-                                expect(item).tohavekey(item2);
-                                expect(item[item2]).tobe(fakeArr[idx][item2]);
-                            });
-                    });
-                });
-            }
-        );
-    }
+					var fakeFields = mockData( $num = 3, $type = "words:4" )[ 1 ].replace( " ", ",", "all" );
+					var fakearr    = createArray( randRange( 5, 10 ), fakeFields );
+					testObj.settagContextLines( fakelen );
+					testObj.settagContextFields( fakeFields );
+					testme = testObj.trimTagContext( fakearr );
+					expect( testme.len() ).toBe( fakelen );
+					testme.each( function( item ){
+						fakeFields
+							.listToArray()
+							.each( function( item2 ){
+								expect( item ).tohavekey( item2 );
+							} );
+					} );
+				} );
+				it( "If the submitted array has values for the apprpriate keys, they should be reflected in the returned array of structs", function(){
+					var fakeLen    = randRange( 1, 3 );
+					var fakeFields = mockData( $num = 3, $type = "words:4" )[ 1 ].replace( " ", ",", "all" );
+					var fakearr    = createArray( randRange( 5, 10 ), fakeFields );
+					testObj.settagContextLines( fakelen );
+					testObj.settagContextFields( fakeFields );
+					testme = testObj.trimTagContext( fakearr );
+					expect( testme.len() ).toBe( fakelen );
+					testme.each( function( item, idx ){
+						fakeFields
+							.listToArray()
+							.each( function( item2, idx2 ){
+								expect( item ).tohavekey( item2 );
+								expect( item[ item2 ] ).tobe( fakeArr[ idx ][ item2 ] );
+							} );
+					} );
+				} );
+			}
+		);
+	}
 
-    function createFakeStruct(required string fields) {
-        var retme = {};
-        fields
-            .listToArray()
-            .each(function(item) {
-                retme[item] = mockdata($type = 'words:1', $num = 1)[1];
-            });
-        return retme;
-    }
+	function createFakeStruct( required string fields ){
+		var retme = {};
+		fields
+			.listToArray()
+			.each( function( item ){
+				retme[ item ] = mockdata( $type = "words:1", $num = 1 )[ 1 ];
+			} );
+		return retme;
+	}
 
-    function createArray(leng, fields) {
-        var retme = [];
-        for (var x = 1; x <= leng; x = x + 1) {
-            retme.append(createfakestruct(arguments.fields));
-        }
-        return retme;
-    }
+	function createArray( leng, fields ){
+		var retme = [];
+		for ( var x = 1; x <= leng; x = x + 1 ) {
+			retme.append( createfakestruct( arguments.fields ) );
+		}
+		return retme;
+	}
 
-    /*
+	/*
 	function fakeError() {
 		return {
 			"Extended_Info" : "",

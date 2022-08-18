@@ -1,14 +1,7 @@
-component accessors="true" {
+component extends="errorFilter.models.BaseFilter" accessors="true" {
 
-    property name="base" inject="errorFilter@errorFilter";
-
-    function run(err) {
-        var retme = getBase().addKeys('expression', err);
-        if (retme.keyExists('tagContext')) {
-            retme['tagContext'] = getBase().trimAndFilterTagContext(arguments.err.tagContext);
-        }
-        retme['filterClass'] = getMetadata(this).name;
-        return retme;
+    struct function run(err) {
+        return super.run(err, 'expression');
     }
 
 }

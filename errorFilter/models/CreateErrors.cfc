@@ -1,6 +1,6 @@
 component {
 
-    function expressionError(shouldRethrow = true) {
+    function expressionError() {
         try {
             return 1 + 'a';
         } catch (any err) {

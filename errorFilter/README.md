@@ -19,10 +19,12 @@ has items which are clearly outside of immediate purview of the error. For examp
 seeing the calls from code from inside ColdBox, TestBox or other frameworks can occasionally be helpful but, more likely than not, it is simply noise which can be filtered out. Error Filter
 also can both filter out entries fitting a certain pattern and limit the length of the tagContext array. 
 
+The stackTrace key in an error is a long string which outputs the stackTrace.  
+
 ## Properties
 
 
-Struct errorClasses: The component which handles filtering the error. 
+Struct errorClasses: A dictionary of component which handles filtering the error. 
 
 Struct typeFields: keys are the type of error and the values are the fields to include in the output for that type
 
@@ -31,6 +33,8 @@ numeric tagContextLines: The maximum length of the tagContext array
 String (comma separated list) tagContextFields: The fields to include in each tagContext entry
 
 Array of strings filterPhrases: The key phrases used to filter out tagContext entries
+
+Boolean removeAllBlankLines: When filtering an error, will remove all keys with empty strings as the value
 
 ## Handling Custom Errors
 

@@ -18,7 +18,8 @@
         "/test/",
         "/tests/"
     ],
-    "dependencies":{},
+    "dependencies":{
+    },
     "description":"",
     "devDependencies":{},
     "installPaths":{},

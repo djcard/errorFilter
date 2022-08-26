@@ -10,9 +10,10 @@ Note: Based on ideas and work from John Wilson at Synaptrix! Thanks!
 ## Usage: 
 
 The simplest usage is to instantiate the errorFilter model ( `getInstance(errorFilter@errorFilter`) )
-and pass any error received through the run() method before passing that on to logbox or wherever you are inclined to send it. 
-ErrorFilter will strip out any keys not explicitly stated in the settings. These keys differ based on the type
-of error ( i.e. database, expression ). 
+and pass any error or logging object  through the run() method before passing that on to logbox or wherever you are inclined to send it. 
+For errors, ErrorFilter will strip out any keys not explicitly stated in the settings. These keys differ based on the type
+of error ( i.e. database, expression ). For Components, it will try to "normalize" them by converting the component to a struct of its properties, stripping out
+keys that notoriously take a long time to serialize such as testbox, wirebox, coldbox and so on. 
 
 Most of the keys in the error structures are simple variables, but the TagContext key is an array of structs. Many times this array
 has items which are clearly outside of immediate purview of the error. For example, when debugging a ColdBox module in development,
@@ -25,17 +26,19 @@ to break it into an array using "#chr(9)#at " as the delimiter. This roughly spl
 ## Properties
 
 
-Struct errorClasses: A dictionary of component which handles filtering the error. 
+errorClasses - Struct: A dictionary of component which handles filtering the error. 
 
-Struct typeFields: keys are the type of error and the values are the fields to include in the output for that type
+typeFields - Struct: keys are the type of error and the values are the fields to include in the output for that type
 
-numeric tagContextLines: The maximum length of the tagContext array
+tagContextLines - numeric: The maximum length of the tagContext array
 
-String (comma separated list) tagContextFields: The fields to include in each tagContext entry
+tagContextFields - String (comma separated list) : The fields to include in each tagContext entry
 
-Array of strings filterPhrases: The key phrases used to filter out tagContext entries
+filterPhrases - Array of strings : The key phrases used to filter out tagContext entries
 
-Boolean removeAllBlankLines: When filtering an error, will remove all keys with empty strings as the value
+removeAllBlankLines - Boolean: When filtering an error, will remove all keys with empty strings as the value
+
+doNotNormalize - comma separated list : a list of keyNames for the componant normalizer to skip. defaults to  "testbox,coldbox,wirebox,cachebox,logbox,this"
 
 ## Handling Custom Errors
 
@@ -61,7 +64,8 @@ It is possible to configure ErrorFilter to handle custom errors.
       		},
       		"tagContextLines" : 3,
       		"tagContextFields" : "codePrintPlain,line,template",
-      		"removeAllBlankLines" : false
+      		"removeAllBlankLines" : false,
+      		"doNotNormalize" : "testbox,coldbox,wirebox,cachebox,logbox,this"
       	}
 ```
 

@@ -12,17 +12,22 @@ component accessors="true" {
 	property name="removeAllBlankLines" inject="coldbox:setting:removeAllBlankLines@errorFilter";
 	property name="wirebox"             inject="wirebox";
 
+
+
+
 	/**
 	 * The main method of the module
 	 *
 	 * @error The error to be filtered
 	 **/
-	function run( required error ){
+	function run( required error = "" ){
 		var processClassName = obtainProcessClass( error );
 		return wirebox.containsInstance( processClassName )
 		 ? wirebox.getInstance( processClassName ).run( error )
 		 : {};
 	}
+
+
 
 	/**
 	 * Tries to determine which class to use to filter the error based on the type key
@@ -30,7 +35,9 @@ component accessors="true" {
 	 * @error The error to be typed
 	 **/
 	function obtainProcessClass( required error ){
-		return error.keyExists( "type" ) && geterrorClasses().keyExists( error.type )
+		return isObject( error )
+		 ? getErrorClasses()[ "component" ]
+		 : error.keyExists( "type" ) && geterrorClasses().keyExists( error.type )
 		 ? getErrorClasses()[ error.type ]
 		 : getErrorClasses()[ "any" ];
 	}

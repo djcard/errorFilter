@@ -1,0 +1,7 @@
+component {
+
+	function getMemento(){
+		return {};
+	}
+
+}

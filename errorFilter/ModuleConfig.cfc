@@ -86,11 +86,13 @@ component {
 			errorClasses : {
 				"Database"   : "database@errorFilter",
 				"Expression" : "expression@errorFilter",
-				"Any"        : "general@errorFilter"
+				"Any"        : "general@errorFilter",
+				"component"  : "cleanComponent@errorFilter"
 			},
 			"tagContextLines"     : 3,
 			"tagContextFields"    : "codePrintPlain,line,template",
-			"removeAllBlankLines" : false
+			"removeAllBlankLines" : false,
+			"doNotNormalize" : "testbox,coldbox,wirebox,cachebox,logbox,this"
 		};
 
 		// Layout Settings

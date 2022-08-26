@@ -24,15 +24,17 @@ component extends="coldbox.system.testing.BaseTestCase" accessors="true" {
 			labels = "automated",
 			body   = function(){
 				beforeEach( function(){
-					errors  = getInstance( "CreateErrors@errorFilter" );
-					err     = errors.expressionError();
-					testobj = createmock( object = getInstance( "ErrorFilter@ErrorFilter" ) );
-
+					testobj       = createmock( object = getInstance( "cleanComponent@ErrorFilter" ) );
+					fakeComponent = createMock( object = createStub() );
 				} );
-				it( "Should call obtainProcessClass 1x", function(){
-					testobj.$( method = "obtainProcessClass", returns = "database" );
-					testme = testObj.run( err );
-					expect( testObj.$count( "obtainProcessClass" ) ).tobe( 1 );
+				it( "If the component does not have  the getmementoFunction, return false", function(){
+					testme = testObj.componentHasFunction( getMetadata( fakeComponent ).functions );
+					expect( testme ).tobeFalse();
+				} );
+				it( "If the component has the getMementoFunction, return true", function(){
+					var fc = createObject( "fakeComponent" );
+					testme = testObj.componentHasFunction( getMetadata( fc ).functions );
+					expect( testme ).tobeTrue();
 				} );
 			}
 		);

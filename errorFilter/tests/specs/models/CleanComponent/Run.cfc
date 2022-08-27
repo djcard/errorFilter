@@ -45,7 +45,7 @@ component extends="coldbox.system.testing.BaseTestCase" accessors="true" {
 				} );
 				it( "Should call normalizeNode 1x", function(){
 					testme = testObj.run( fakeStruct );
-					expect( testObj.$count( "normalizeNode" ) ).tobe(1 );
+					expect( testObj.$count( "normalizeNode" ) ).tobe( 1 );
 				} );
 			}
 		);

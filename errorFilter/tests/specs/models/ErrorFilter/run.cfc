@@ -27,7 +27,6 @@ component extends="coldbox.system.testing.BaseTestCase" accessors="true" {
 					errors  = getInstance( "CreateErrors@errorFilter" );
 					err     = errors.expressionError();
 					testobj = createmock( object = getInstance( "ErrorFilter@ErrorFilter" ) );
-
 				} );
 				it( "Should call obtainProcessClass 1x", function(){
 					testobj.$( method = "obtainProcessClass", returns = "database" );

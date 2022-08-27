@@ -28,14 +28,14 @@ component extends="coldbox.system.testing.BaseTestCase" accessors="true" {
 
 					fakeComponent = createStub();
 					fakeComponent.$( method = "getMemento", returns = {} );
-					testObj.$(method="buildRecursiveFunctions",returns=[]);
-					testObj.$(method="normalizeStruct",returns={});
+					testObj.$( method = "buildRecursiveFunctions", returns = [] );
+					testObj.$( method = "normalizeStruct", returns = {} );
 				} );
 				it( "if component has already been process previously, return a default string", function(){
-					testObj.setcalledArray(["testbox.system.mockutils.Stub"]);
+					testObj.setcalledArray( [ "testbox.system.mockutils.Stub" ] );
 					testme = testObj.normalizeComponent( fakeComponent );
-					expect( isSimpleValue(testme) ).tobeTrue( );
-					expect(testObj.$count(method="buildRecursiveFunctions")).tobe(0);
+					expect( isSimpleValue( testme ) ).tobeTrue();
+					expect( testObj.$count( method = "buildRecursiveFunctions" ) ).tobe( 0 );
 				} );
 				it( "Should call buildRecursiveFunctions 1x", function(){
 					testme = testObj.normalizeComponent( fakeComponent );
@@ -49,17 +49,19 @@ component extends="coldbox.system.testing.BaseTestCase" accessors="true" {
 
 
 
-				it("should add the name of the component to the calledArray",function(){
+				it( "should add the name of the component to the calledArray", function(){
 					testme = testObj.normalizeComponent( fakeComponent );
-					expect(testObj.getCalledArray().findNoCase(getMetaData(fakeComponent).fullName)).tobe(1);
-				});
+					expect( testObj.getCalledArray().findNoCase( getMetadata( fakeComponent ).fullName ) ).tobe(
+						1
+					);
+				} );
 
 				it( "Should call normalizeStruct 1x", function(){
 					testObj.$( method = "normalizeStruct", returns = true );
 					testme = testObj.normalizeComponent( fakeComponent );
-						expect( testObj.$count( "normalizeStruct" ) ).tobe( 1 );
+					expect( testObj.$count( "normalizeStruct" ) ).tobe( 1 );
 				} );
-				//it( "test", function(){
+				// it( "test", function(){
 				//	var start = getTickCount();
 				//	testme = testObj.normalizeComponent( getWirebox() );
 				//	writeDump(testme);
@@ -68,7 +70,7 @@ component extends="coldbox.system.testing.BaseTestCase" accessors="true" {
 				//	writeDump(serializeJSON(testme));
 				//	writeDump(getTickCount()-endDump);
 				//	expect( testObj.$count( "normalizeStruct" ) ).tobe( 1 );
-				//} );
+				// } );
 			}
 		);
 	}

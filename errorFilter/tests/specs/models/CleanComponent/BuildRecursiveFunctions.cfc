@@ -34,25 +34,20 @@ component extends="coldbox.system.testing.BaseTestCase" accessors="true" {
 					};
 
 					compStruct = {
-						"functions" : [
-							{name:"yoyo"}
-						],
-						"extends" : {
-							functions:[
-								{name:"oh yeah"}
-							],
-							extends:{
+						"functions" : [ { name : "yoyo" } ],
+						"extends"   : {
+							functions : [ { name : "oh yeah" } ],
+							extends   : {
 								functions : [
-								{name:"thirdlevel"},
-								{name:"thirdlevelA"},
-								{name:"thirdlevelA"},
-									]
+									{ name : "thirdlevel" },
+									{ name : "thirdlevelA" },
+									{ name : "thirdlevelA" }
+								]
 							}
 						}
 					};
 
 					testobj = createmock( object = getInstance( "cleanComponent@ErrorFilter" ) );
-
 				} );
 				it( "should return an array", function(){
 					testme = testObj.buildRecursiveFunctions( compStruct );
@@ -60,7 +55,9 @@ component extends="coldbox.system.testing.BaseTestCase" accessors="true" {
 				} );
 				it( "should return an array of the cumulated functions of all extended components", function(){
 					testme = testObj.buildRecursiveFunctions( compStruct );
-					expect( testme.len() ).tobe( compStruct.functions.len() + compStruct.extends.functions.len() + compStruct.extends.extends.functions.len() );
+					expect( testme.len() ).tobe(
+						compStruct.functions.len() + compStruct.extends.functions.len() + compStruct.extends.extends.functions.len()
+					);
 				} );
 			}
 		);

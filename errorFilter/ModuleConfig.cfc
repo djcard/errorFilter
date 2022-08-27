@@ -92,7 +92,7 @@ component {
 			"tagContextLines"     : 3,
 			"tagContextFields"    : "codePrintPlain,line,template",
 			"removeAllBlankLines" : false,
-			"doNotNormalize" : "testbox,coldbox,wirebox,cachebox,logbox,this"
+			"doNotNormalize"      : "testbox,coldbox,wirebox,cachebox,logbox,this"
 		};
 
 		// Layout Settings

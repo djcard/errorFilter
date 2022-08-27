@@ -3,11 +3,12 @@
  *
  **/
 component accessors="true" {
+
 	property name="doNotNormalizelist" inject="coldbox:setting:doNotNormalize@errorFilter";
 	property name="calledArray";
 
-	if(isNull(getCalledArray())){
-		setCalledArray([]);
+	if ( isNull( getCalledArray() ) ) {
+		setCalledArray( [] );
 	};
 
 	/***
@@ -15,7 +16,7 @@ component accessors="true" {
 	 *
 	 * @err The component to be normalized
 	 **/
-	function run(required any err ){
+	function run( required any err ){
 		variables.calledArray = [];
 		return normalizeNode( err );
 	}
@@ -88,12 +89,12 @@ component accessors="true" {
 	 **/
 	function buildRecursiveFunctions( required struct allMeta ){
 		var allFunc = [];
-		var base = allMeta;
-		while(!isSimpleValue(base)){
-			if(base.keyExists("functions")){
-				allFunc.append(base.functions,true);
+		var base    = allMeta;
+		while ( !isSimpleValue( base ) ) {
+			if ( base.keyExists( "functions" ) ) {
+				allFunc.append( base.functions, true );
 			}
-			base = base.keyExists("extends") ? base.extends : "";
+			base = base.keyExists( "extends" ) ? base.extends : "";
 		}
 
 		return allFunc;

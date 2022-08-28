@@ -87,7 +87,8 @@ component {
 				"Database"   : "database@errorFilter",
 				"Expression" : "expression@errorFilter",
 				"Any"        : "general@errorFilter",
-				"component"  : "cleanComponent@errorFilter"
+				"component"  : "cleanComponent@errorFilter",
+				"genericStruct": "genericStruct@errorFilter"
 			},
 			"tagContextLines"     : 3,
 			"tagContextFields"    : "codePrintPlain,line,template",

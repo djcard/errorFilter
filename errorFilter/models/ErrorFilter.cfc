@@ -39,7 +39,7 @@ component accessors="true" {
 		 ? getErrorClasses()[ "component" ]
 		 : error.keyExists( "type" ) && geterrorClasses().keyExists( error.type )
 		 ? getErrorClasses()[ error.type ]
-		 : getErrorClasses()[ "any" ];
+		 : getErrorClasses()[ "genericStruct" ];
 	}
 
 	/**

@@ -13,7 +13,7 @@ The simplest usage is to instantiate the errorFilter model ( `getInstance(errorF
 and pass any error or logging object  through the run() method before passing that on to logbox or wherever you are inclined to send it. 
 For errors, ErrorFilter will strip out any keys not explicitly stated in the settings. These keys differ based on the type
 of error ( i.e. database, expression ). For Components, it will try to "normalize" them by converting the component to a struct of its properties, stripping out
-keys that notoriously take a long time to serialize such as testbox, wirebox, coldbox and so on. 
+keys that notoriously take a long time to serialize such as testbox, wirebox, coldbox and so on. If a generic struct is submitted, it will return the struct as is. 
 
 Most of the keys in the error structures are simple variables, but the TagContext key is an array of structs. Many times this array
 has items which are clearly outside of immediate purview of the error. For example, when debugging a ColdBox module in development,

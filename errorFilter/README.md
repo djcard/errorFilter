@@ -69,4 +69,9 @@ It is possible to configure ErrorFilter to handle custom errors.
       	}
 ```
 
+Change Log
+0.0.7 - a generic structure with no "type" key is returned as is, not "cleaned" (since this would strip out all keys)
+
+0.0.6 - added support for "normalizing" a component
+
 

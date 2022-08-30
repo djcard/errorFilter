@@ -22,6 +22,7 @@ component accessors="true" {
 	 **/
 	function run( required error = "" ){
 		var processClassName = obtainProcessClass( error );
+
 		return wirebox.containsInstance( processClassName )
 		 ? wirebox.getInstance( processClassName ).run( error )
 		 : {};

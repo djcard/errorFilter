@@ -38,9 +38,9 @@ component accessors="true" {
 	function obtainProcessClass( required error ){
 		return isObject( error )
 		 ? getErrorClasses()[ "component" ]
-		 : error.keyExists( "type" ) && geterrorClasses().keyExists( error.type )
+		 : isStruct( error ) && error.keyExists( "type" ) && geterrorClasses().keyExists( error.type )
 		 ? getErrorClasses()[ error.type ]
-		 : getErrorClasses()[ "genericStruct" ];
+		 : getErrorClasses()[ "genericItem" ];
 	}
 
 	/**

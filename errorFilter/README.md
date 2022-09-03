@@ -71,6 +71,8 @@ It is possible to configure ErrorFilter to handle custom errors.
 
 Change Log
 
+cd 0.0.9 - Adapted the genericStruct component to handle any data type and was therefore renamed to genericItem. Note: This might necessitate renaming the errorClass in your Coldbox.cfc.
+
 0.0.8 - fixed missing files. Formatting
 
 0.0.7 - a generic structure with no "type" key is returned as is, not "cleaned" (since this would strip out all keys)

@@ -28,21 +28,23 @@ component extends="coldbox.system.testing.BaseTestCase" accessors="true" {
 					fakeClass      = mockdata( $type = "words:1" )[ 1 ];
 					fakeAny        = mockdata( $type = "words:1" )[ 1 ];
 					fakeCompReturn = mockdata( $type = "words:1" )[ 1 ];
+					fakeGeneric    = mockdata( $type = "words:1" )[ 1 ];
 					errorClasses   = {
-						"#fakeKey#" : fakeClass,
-						"any"       : fakeAny,
-						"component" : fakeCompReturn
+						"#fakeKey#"   : fakeClass,
+						"any"         : fakeAny,
+						"component"   : fakeCompReturn,
+						"genericItem" : fakeGeneric
 					};
 					testobj = createmock( object = getInstance( "ErrorFilter@ErrorFilter" ) );
 					testObj.seterrorClasses( errorClasses );
 				} );
-				it( "If there is no type in the submitted error, return the 'any' value", function(){
+				it( "If there is no type in the submitted error, return the 'genericStruct' value", function(){
 					testme = testObj.obtainProcessClass( {} );
-					expect( testme ).toBe( fakeAny );
+					expect( testme ).toBe( fakeGeneric );
 				} );
-				it( "If the submitted type is not in the errorClasses object, return the 'Any' value", function(){
+				it( "If the submitted type is not in the errorClasses object, return the 'genericStruct' value", function(){
 					testme = testObj.obtainProcessClass( { type : fakeClass } );
-					expect( testme ).toBe( fakeAny );
+					expect( testme ).toBe( fakeGeneric );
 				} );
 				it( "If the submitted type is in the errorClasses object, return the corresponding value", function(){
 					testme = testObj.obtainProcessClass( { type : fakeKey } );

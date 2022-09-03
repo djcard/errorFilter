@@ -84,11 +84,11 @@ component {
 				"/testbox/"
 			],
 			errorClasses : {
-				"Database"      : "database@errorFilter",
-				"Expression"    : "expression@errorFilter",
-				"Any"           : "general@errorFilter",
-				"component"     : "cleanComponent@errorFilter",
-				"genericStruct" : "genericStruct@errorFilter"
+				"Database"    : "database@errorFilter",
+				"Expression"  : "expression@errorFilter",
+				"Any"         : "general@errorFilter",
+				"component"   : "cleanComponent@errorFilter",
+				"genericItem" : "genericItem@errorFilter"
 			},
 			"tagContextLines"     : 3,
 			"tagContextFields"    : "codePrintPlain,line,template",
@@ -107,18 +107,6 @@ component {
 
 		// Binder Mappings
 		// binder.map("Alias").to("#moduleMapping#.models.MyService");
-	}
-
-	/**
-	 * Fired when the module is registered and activated.
-	 */
-	function onLoad(){
-	}
-
-	/**
-	 * Fired when the module is unregistered and unloaded
-	 */
-	function onUnload(){
 	}
 
 }

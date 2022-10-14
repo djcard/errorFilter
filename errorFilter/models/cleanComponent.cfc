@@ -6,6 +6,7 @@ component accessors="true" {
 
 	property name="doNotNormalizelist" inject="coldbox:setting:doNotNormalize@errorFilter";
 	property name="calledArray";
+	property name="errorFilter" inject="errorFilter@errorFilter";
 
 	if ( isNull( getCalledArray() ) ) {
 		setCalledArray( [] );
@@ -18,7 +19,7 @@ component accessors="true" {
 	 **/
 	function run( required any err ){
 		variables.calledArray = [];
-		return normalizeNode( err );
+		return normalizeComponent( err );
 	}
 
 	/***
@@ -27,14 +28,17 @@ component accessors="true" {
 	 * @value The variable to be normalized
 	 **/
 	function normalizeNode( value ){
+
 		if ( isSimpleValue( value ) ) {
 			return value;
-		} else if ( isObject( value ) ) {
+		} else if ( isStruct( value ) ) {
+			return normalizeStruct( value );
+		}
+		else if ( isObject( value ) ) {
 			return normalizeComponent( value );
 		} else if ( isArray( value ) ) {
 			return normalizeArray( value );
-		} else if ( isStruct( value ) ) {
-			return normalizeStruct( value );
+
 		} else if ( isClosure( value ) ) {
 			return value;
 		} else if ( isCustomFunction( value ) ) {
@@ -56,9 +60,9 @@ component accessors="true" {
 	 **/
 	function normalizeComponent( required any comp ){
 		var allMeta = getMetadata( comp );
-
-		if ( variables.calledArray.findNoCase( allMeta.fullname ) != 0 ) {
-			return "already rendered #allMeta.fullname#";
+		var keyName=errorFilter.extractKeyName(comp);
+		if ( variables.calledArray.findNoCase( keyName ) != 0 ) {
+			return "already rendered #keyName#";
 		} else {
 			var converted    = {};
 			// This is returning duplicates but not sure how to prevent that. It's not "right" but it's not "wrong"
@@ -77,7 +81,7 @@ component accessors="true" {
 					}
 				} );
 			}
-			variables.calledArray.append( allMeta.fullName );
+			variables.calledArray.append( keyName );
 			return normalizeStruct( converted );
 		}
 	}

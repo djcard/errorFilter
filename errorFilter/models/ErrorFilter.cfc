@@ -22,10 +22,9 @@ component accessors="true" {
 	 **/
 	function run( required error = "" ){
 		var processClassName = obtainProcessClass( error );
-
 		return wirebox.containsInstance( processClassName )
-		 ? wirebox.getInstance( processClassName ).run( error )
-		 : {};
+			? wirebox.getInstance( processClassName ).run( error )
+			: {};
 	}
 
 
@@ -36,11 +35,25 @@ component accessors="true" {
 	 * @error The error to be typed
 	 **/
 	function obtainProcessClass( required error ){
-		return isObject( error )
-		 ? getErrorClasses()[ "component" ]
-		 : isStruct( error ) && error.keyExists( "type" ) && geterrorClasses().keyExists( error.type )
-		 ? getErrorClasses()[ error.type ]
-		 : getErrorClasses()[ "genericItem" ];
+		var keyName = extractKeyName(error);
+
+		return keyName=="Struct" && error.keyExists( "type" ) && geterrorClasses().keyExists( error.type )
+		 		? getErrorClasses()[ error.type ]
+				: getErrorClasses().keyExists( keyName )
+					? getErrorClasses()[keyname]
+					: isObject( error )
+						? getErrorClasses()[ "component" ]
+		 				: getErrorClasses()[ "genericItem" ];
+	}
+
+	function extractKeyName(error){
+		var referenceName="";
+		try{
+			referenceName=getMetadata(error).getCanonicalName().listLast(".");
+		} catch(any err){
+			referenceName=getMetadata(error).fullName;
+		}
+		return referenceName;
 	}
 
 	/**
@@ -122,7 +135,7 @@ component accessors="true" {
 	}
 
 	function trimAndFilterStackTrace( required string stackTrace ){
-		return stackTrace.listToArray( delimiters = "#chr( 9 )#at ", multiCharacterDelimiter = true );
+		return stackTrace.listToArray( "#chr( 9 )#at ", true );
 	}
 
 }

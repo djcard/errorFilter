@@ -88,7 +88,15 @@ component {
 				"Expression"  : "expression@errorFilter",
 				"Any"         : "general@errorFilter",
 				"component"   : "cleanComponent@errorFilter",
-				"genericItem" : "genericItem@errorFilter"
+				"genericItem" : "genericItem@errorFilter",
+				"UndefinedVariableException" : "cleanComponent",
+				"DatabaseQueryException": "database@errorFilter",
+				"ParseException":"expression@errorFilter",
+				"ComplexObjectException":"expression@errorFilter",
+				"InvalidMethodNameException":"expression@errorFilter",
+				"template"   : "expression@errorFilter",
+				"application": "expression@errorFilter",
+				"java.io.IOException": "expression@errorFilter"
 			},
 			"tagContextLines"     : 3,
 			"tagContextFields"    : "codePrintPlain,line,template",
